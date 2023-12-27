@@ -7,6 +7,12 @@ source "$CURRENT_DIR/helpers.sh"
 
 toggle_lazygit_window() {
 	local lazygit_window_name=$(get_lazygit_window_name)
+	local current_window=$(get_current_window)
+
+	if [ "$current_window" = "$lazygit_window_name" ]; then
+		tmux last-window
+		return
+	fi
 
 	if [ "$(check_if_window_exists "$lazygit_window_name")" -eq 1 ]; then
 		tmux select-window -t "$lazygit_window_name"

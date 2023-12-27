@@ -12,6 +12,10 @@ get_tmux_option() {
 	fi
 }
 
+get_current_window() {
+	echo $(tmux display-message -p '#W')
+}
+
 bind_if_set() {
 	local key=$1
 	local command=$2
