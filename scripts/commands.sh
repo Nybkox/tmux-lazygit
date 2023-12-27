@@ -8,6 +8,7 @@ source "$CURRENT_DIR/helpers.sh"
 toggle_lazygit_window() {
 	local lazygit_window_name=$(get_lazygit_window_name)
 	local current_window=$(get_current_window)
+	local current_path=$(tmux display-message -p -F "#{pane_current_path}")
 
 	if [ "$current_window" = "$lazygit_window_name" ]; then
 		tmux last-window
@@ -17,7 +18,7 @@ toggle_lazygit_window() {
 	if [ "$(check_if_window_exists "$lazygit_window_name")" -eq 1 ]; then
 		tmux select-window -t "$lazygit_window_name"
 	else
-		tmux new-window -n "$lazygit_window_name"
+		tmux new-window -c "$current_path" -n "$lazygit_window_name"
 		tmux select-window -t "$lazygit_window_name"
 		tmux send-keys -t "$lazygit_window_name" "lazygit" C-m
 	fi
