@@ -2,6 +2,8 @@
 
 The Tmux LazyGit plugin provide a quick and easy way to open or toggle a [LazyGit](https://github.com/jesseduffield/lazygit) window for the current folder within your tmux session.
 
+Press `prefix` + `g` to switch to LazyGit widnow, press again to switch back.
+
 ## Installation
 
 ### Using Tmux Plugin Manager (tpm)
